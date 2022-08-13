@@ -16,20 +16,20 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<StepperData> stepperData = [
     StepperData(
-      title: "USA",
-      subtitle: "Hello",
+      title: "Order Placed",
+      subtitle: "Your order has beed placed",
     ),
     StepperData(
-      title: "Spain",
-      subtitle: "Hola",
+      title: "Preparing",
+      subtitle: "Your order is being prepared",
     ),
     StepperData(
-      title: "Turkey",
-      subtitle: "merhaba",
+      title: "On the way",
+      subtitle: "Our delivery executive is on the way to deliver your item",
     ),
     StepperData(
-      title: "India",
-      subtitle: "Namaste",
+      title: "Delivered",
+      subtitle: "Your order was delivered successfully",
     ),
   ];
 
@@ -53,6 +53,17 @@ class _MyAppState extends State<MyApp> {
               stepperList: stepperData,
               stepperDirection: Axis.vertical,
               horizontalStepperHeight: 70,
+              dotWidget: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.all(Radius.circular(30))
+                ),
+                child: Icon(Icons.fastfood, color: Colors.white),
+              ),
+              activeBarColor: Colors.red,
+              inActiveBarColor: Colors.grey,
+              activeIndex: 2,
               barThickness: 8,
             ),
           ),

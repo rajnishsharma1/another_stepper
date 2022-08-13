@@ -179,3 +179,29 @@ AnotherStepper(
 
 #### Output Custom Dot and Bar
 ![](display/custom_dot.png)
+
+<br>
+
+#### Custom Dot, Bar, Dot thickness and long text
+```dart
+AnotherStepper(
+  stepperList: stepperData,
+  stepperDirection: Axis.horizontal,
+  horizontalStepperHeight: 70,
+  dotWidget: Container(
+  padding: EdgeInsets.all(8),
+  decoration: BoxDecoration(
+  color: Colors.red,
+  borderRadius: BorderRadius.all(Radius.circular(30))
+  ),
+  child: Icon(Icons.fastfood, color: Colors.white),
+  ),
+  activeBarColor: Colors.red,
+  inActiveBarColor: Colors.grey,
+  activeIndex: 2,
+  barThickness: 8,
+)
+```
+
+#### Output Dot, Bar, Dot thickness and long text
+![](display/custom_long.png)
