@@ -1,4 +1,3 @@
-[![flutter][]][web flutter]
 A flutter package to create easily customizable Horizontal and Vertical stepper.
 
 [comment]: <> (## Features)
@@ -12,9 +11,6 @@ A flutter package to create easily customizable Horizontal and Vertical stepper.
 [comment]: <> (start using the package.)
 
 ## Example AnotherStepper Horizontal(Default)
-
-[![](/home/blacknoir/StudioProjects/another_stepper/display/horizontal_default.png)][]
-
 ```dart
 AnotherStepper(
   stepperList: stepperData,
@@ -22,6 +18,12 @@ AnotherStepper(
   horizontalStepperHeight: 70,
 )
 ```
+
+<br>
+
+
+#### Output SlideCountdown(Default)
+[![display][]][horizontal_default]
 
 ## Additional information
 
