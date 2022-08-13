@@ -16,15 +16,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<StepperData> stepperData = [
     StepperData(
-      title: "Ramesh",
+      title: "USA",
       subtitle: "Hello",
     ),
     StepperData(
-      title: "Suresh",
+      title: "Canada",
       subtitle: "Hey",
     ),
     StepperData(
-      title: "Mohan",
+      title: "Turkey",
       subtitle: "Hi",
     ),
   ];
@@ -42,38 +42,13 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(
-          children: [
-            AnotherStepper(
-              stepperList: stepperData,
-              stepperDirection: Axis.horizontal,
-              horizontalStepperHeight: 70,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: AnotherStepper(
-                stepperList: stepperData,
-                stepperDirection: Axis.vertical,
-                horizontalStepperHeight: 70,
-              ),
-            ),
-            AnotherStepper(
-              stepperList: stepperData,
-              stepperDirection: Axis.horizontal,
-              horizontalStepperHeight: 70,
-              inverted: true,
-            ),
-            AnotherStepper(
-              stepperList: stepperData,
-              stepperDirection: Axis.horizontal,
-              horizontalStepperHeight: 70,
-            ),
-            AnotherStepper(
-              stepperList: stepperData,
-              stepperDirection: Axis.horizontal,
-              horizontalStepperHeight: 70,
-            ),
-          ],
+        body: Center(
+          child:
+          AnotherStepper(
+            stepperList: stepperData,
+            stepperDirection: Axis.horizontal,
+            horizontalStepperHeight: 70,
+          ),
         ),
       ),
     );
