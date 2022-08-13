@@ -23,7 +23,8 @@ AnotherStepper(
 
 
 #### Output SlideCountdown(Default)
-![](display/horizontal_default.png)
+
+<img height="400" src="display/horizontal_default.png" width="400"/>
 
 ## Additional information
 
