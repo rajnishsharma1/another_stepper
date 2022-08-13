@@ -3,9 +3,9 @@ import 'package:another_stepper/utils/utils.dart';
 import 'package:another_stepper/widgets/stepper_dot_widget.dart';
 import 'package:flutter/material.dart';
 
-class HorizontalStepperItem extends StatelessWidget {
-  /// Stepper Item to show horizontal stepper
-  const HorizontalStepperItem(
+class VerticalStepperItem extends StatelessWidget {
+  /// Stepper Item to show vertical stepper
+  const VerticalStepperItem(
       {Key? key,
       required this.item,
       required this.index,
@@ -15,7 +15,7 @@ class HorizontalStepperItem extends StatelessWidget {
       required this.isInverted,
       required this.activeBarColor,
       required this.inActiveBarColor,
-      required this.barHeight,
+      required this.barWidth,
       required this.dotWidget,
       required this.titleTextStyle,
       required this.subtitleTextStyle})
@@ -45,8 +45,8 @@ class HorizontalStepperItem extends StatelessWidget {
   /// Bar color for inactive step
   final Color inActiveBarColor;
 
-  /// Bar height/thickness
-  final double barHeight;
+  /// Bar width/thickness
+  final double barWidth;
 
   /// [Widget] for dot/point
   final Widget? dotWidget;
@@ -59,39 +59,16 @@ class HorizontalStepperItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment:
-          isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
+    return Row(
       children: [
-        if (item.title != null && item.title != "") ...[
-          SizedBox(
-              width: gap + 20,
-              child: Text(
-                item.title!,
-                textAlign: TextAlign.center,
-                style: titleTextStyle,
-              )),
-          const SizedBox(height: 4),
-        ],
-        if (item.subtitle != null && item.subtitle != "") ...[
-          SizedBox(
-              width: gap + 20,
-              child: Text(
-                item.subtitle!,
-                textAlign: TextAlign.center,
-                style: subtitleTextStyle,
-              )),
-          const SizedBox(height: 8),
-        ],
-        Row(
+        Column(
           children: [
             Container(
               color: index == 0
                   ? Colors.transparent
                   : (index <= activeIndex ? activeBarColor : inActiveBarColor),
-              width: gap,
-              height: barHeight,
+              width: barWidth,
+              height: gap,
             ),
             index <= activeIndex
                 ? dotWidget ??
@@ -113,10 +90,34 @@ class HorizontalStepperItem extends StatelessWidget {
               color: index == totalLength - 1
                   ? Colors.transparent
                   : (index < activeIndex ? activeBarColor : inActiveBarColor),
-              width: gap,
-              height: barHeight,
+              width: barWidth,
+              height: gap,
             ),
           ],
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Column(
+            crossAxisAlignment:
+                isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              if (item.title != null && item.title != "") ...[
+                Text(
+                  item.title!,
+                  textAlign: TextAlign.start,
+                  style: titleTextStyle,
+                ),
+              ],
+              const SizedBox(height: 8),
+              if (item.subtitle != null && item.subtitle != "") ...[
+                Text(
+                  item.subtitle!,
+                  textAlign: TextAlign.start,
+                  style: subtitleTextStyle,
+                ),
+              ],
+            ],
+          ),
         ),
       ],
     );

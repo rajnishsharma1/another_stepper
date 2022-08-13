@@ -43,11 +43,18 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: AnotherStepper(
-            stepperList: stepperData,
-            activeIndex: 0,
-            stepperDirection: Axis.horizontal,
-            horizontalStepperHeight: 70,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AnotherStepper(
+              stepperList: stepperData,
+              activeIndex: 2,
+              gap: 40,
+              barThickness: 10,
+              stepperDirection: Axis.horizontal,
+              horizontalStepperHeight: 70,
+              activeBarColor: Colors.blue,
+              inActiveBarColor: Colors.grey,
+            ),
           ),
         ),
       ),

@@ -9,35 +9,40 @@ class StepperDot extends StatelessWidget {
     required this.activeIndex,
   }) : super(key: key);
 
+  /// Index at which the item is present
   final int index;
+
+  /// Total length of the list provided
   final int totalLength;
+
+  /// Active index which needs to be highlighted and before that
   final int activeIndex;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 14,
-      width: 14,
+      height: 18,
+      width: 18,
       decoration: BoxDecoration(
         border: Border.all(
-          color: (index <= activeIndex) ? Colors.black : Colors.grey,
+          color: (index <= activeIndex) ? Colors.blue : Colors.grey,
           width: 1,
         ),
-        borderRadius: BorderRadius.all(
+        borderRadius: const BorderRadius.all(
           Radius.circular(30),
         ),
       ),
       child: Container(
-        height: 10,
-        width: 10,
-        margin: EdgeInsets.all(2),
+        height: 14,
+        width: 14,
+        margin: const EdgeInsets.all(2),
         decoration: BoxDecoration(
-          color: (index <= activeIndex) ? Colors.black : Colors.grey,
+          color: (index <= activeIndex) ? Colors.blue : Colors.grey,
           border: Border.all(
-            color: (index <= activeIndex) ? Colors.black : Colors.grey,
+            color: (index <= activeIndex) ? Colors.blue : Colors.grey,
             width: 1,
           ),
-          borderRadius: BorderRadius.all(
+          borderRadius: const BorderRadius.all(
             Radius.circular(30),
           ),
         ),

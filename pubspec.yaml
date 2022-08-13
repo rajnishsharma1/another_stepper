@@ -1,7 +1,7 @@
 name: another_stepper
 description: A new Flutter project.
 version: 0.0.1
-repository:
+repository: https://github.com/BlackNoir1/another_stepper
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
