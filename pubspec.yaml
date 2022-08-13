@@ -1,5 +1,5 @@
 name: another_stepper
-description: Vertical and Horizontal steppers with title and subtitle.
+description: Vertical and Horizontal steppers with title and subtitle and custom styles.
 version: 1.0.0
 repository: https://github.com/BlackNoir1/another_stepper
 
