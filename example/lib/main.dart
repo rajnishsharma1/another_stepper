@@ -43,13 +43,13 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child:
-          Padding(
+          child: Padding(
             padding: const EdgeInsets.only(left: 20),
             child: AnotherStepper(
               stepperList: stepperData,
-              stepperDirection: Axis.vertical,
+              stepperDirection: Axis.horizontal,
               horizontalStepperHeight: 70,
+              inverted: true,
             ),
           ),
         ),

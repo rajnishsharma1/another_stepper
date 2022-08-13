@@ -12,6 +12,25 @@ A flutter package to create easily customizable Horizontal and Vertical stepper.
 
 ## Example AnotherStepper
 
+#### Dummy StepperData
+
+```dart
+  List<StepperData> stepperData = [
+    StepperData(
+      title: "USA",
+      subtitle: "Hello",
+    ),
+    StepperData(
+      title: "Canada",
+      subtitle: "Hey",
+    ),
+    StepperData(
+      title: "Turkey",
+      subtitle: "Hi",
+    ),
+  ];
+```
+
 #### Horizontal(Default)
 ```dart
 AnotherStepper(
@@ -30,7 +49,7 @@ AnotherStepper(
 ```dart
 AnotherStepper(
   stepperList: stepperData,
-  stepperDirection: Axis.horizontal,
+  stepperDirection: Axis.vertical,
   horizontalStepperHeight: 70,
 )
 ```
@@ -40,8 +59,17 @@ AnotherStepper(
 #### Output Vertical(Default)
 ![](display/vertical_default.png)
 
-## Additional information
+#### Horizontal Inverted
+```dart
+AnotherStepper(
+  stepperList: stepperData,
+  stepperDirection: Axis.horizontal,
+  horizontalStepperHeight: 70,
+  inverted: true,
+)
+```
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+<br>
+
+#### Output Horizontal Inverted
+![](display/horizontal_inverted.png)
