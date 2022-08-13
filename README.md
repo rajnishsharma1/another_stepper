@@ -40,10 +40,10 @@ AnotherStepper(
 )
 ```
 
-<br>
-
 #### Output Horizontal(Default)
 ![](display/horizontal_default.png)
+
+<br>
 
 #### Vertical(Default)
 ```dart
@@ -54,10 +54,10 @@ AnotherStepper(
 )
 ```
 
-<br>
-
 #### Output Vertical(Default)
 ![](display/vertical_default.png)
+
+<br>
 
 #### Horizontal Inverted
 ```dart
