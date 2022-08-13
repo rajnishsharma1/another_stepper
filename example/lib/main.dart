@@ -20,12 +20,16 @@ class _MyAppState extends State<MyApp> {
       subtitle: "Hello",
     ),
     StepperData(
-      title: "Canada",
-      subtitle: "Hey",
+      title: "Spain",
+      subtitle: "Hola",
     ),
     StepperData(
       title: "Turkey",
-      subtitle: "Hi",
+      subtitle: "merhaba",
+    ),
+    StepperData(
+      title: "India",
+      subtitle: "Namaste",
     ),
   ];
 
@@ -47,9 +51,19 @@ class _MyAppState extends State<MyApp> {
             padding: const EdgeInsets.only(left: 20),
             child: AnotherStepper(
               stepperList: stepperData,
-              stepperDirection: Axis.horizontal,
+              stepperDirection: Axis.vertical,
               horizontalStepperHeight: 70,
-              inverted: true,
+              dotWidget: Container(
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(30))
+                ),
+                child: Icon(Icons.navigate_next_sharp, color: Colors.white),
+              ),
+              activeBarColor: Colors.red,
+              inActiveBarColor: Colors.grey,
+              activeIndex: 1,
             ),
           ),
         ),
