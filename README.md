@@ -1,7 +1,7 @@
 A flutter package to create easily customizable Horizontal and Vertical stepper.
 
 ## Getting started
-In the dependencies: section of your pubspec.yaml, add the following line:
+In the `dependencies`: section of your `pubspec.yaml`, add the following line:
 ```yaml
 dependencies:
   another_stepper: <latest_version>
