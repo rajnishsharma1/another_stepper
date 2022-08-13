@@ -23,7 +23,7 @@ AnotherStepper(
 
 <br>
 
-#### Output SlideCountdown(Default)
+#### Output Horizontal(Default)
 ![](display/horizontal_default.png)
 
 ## Additional information
