@@ -10,7 +10,9 @@ A flutter package to create easily customizable Horizontal and Vertical stepper.
 
 [comment]: <> (start using the package.)
 
-## Example AnotherStepper Horizontal(Default)
+## Example AnotherStepper
+
+#### Example AnotherStepper Horizontal(Default)
 ```dart
 AnotherStepper(
   stepperList: stepperData,
