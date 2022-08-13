@@ -1,15 +1,5 @@
 A flutter package to create easily customizable Horizontal and Vertical stepper.
 
-[comment]: <> (## Features)
-
-[comment]: <> (TODO: List what your package can do. Maybe include images, gifs, or videos.)
-
-[comment]: <> (## Getting started)
-
-[comment]: <> (TODO: List prerequisites and provide or point to information on how to)
-
-[comment]: <> (start using the package.)
-
 ## Example AnotherStepper
 
 #### Dummy StepperData
