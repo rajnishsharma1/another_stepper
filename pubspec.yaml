@@ -1,6 +1,6 @@
 name: another_stepper
-description: A new Flutter project.
-version: 0.0.1
+description: Vertical and Horizontal steppers with title and subtitle.
+version: 1.0.0
 repository: https://github.com/BlackNoir1/another_stepper
 
 environment:
