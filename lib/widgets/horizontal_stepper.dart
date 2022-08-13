@@ -63,62 +63,70 @@ class HorizontalStepperItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment:
           isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
-      children: [
-        if (item.title != null && item.title != "") ...[
-          SizedBox(
-              width: gap + 20,
-              child: Text(
-                item.title!,
-                textAlign: TextAlign.center,
-                style: titleTextStyle,
-              )),
-          const SizedBox(height: 4),
-        ],
-        if (item.subtitle != null && item.subtitle != "") ...[
-          SizedBox(
-              width: gap + 20,
-              child: Text(
-                item.subtitle!,
-                textAlign: TextAlign.center,
-                style: subtitleTextStyle,
-              )),
-          const SizedBox(height: 8),
-        ],
-        Row(
-          children: [
-            Container(
-              color: index == 0
-                  ? Colors.transparent
-                  : (index <= activeIndex ? activeBarColor : inActiveBarColor),
-              width: gap,
-              height: barHeight,
-            ),
-            index <= activeIndex
-                ? dotWidget ??
-                    StepperDot(
-                      index: index,
-                      totalLength: totalLength,
-                      activeIndex: activeIndex,
-                    )
-                : ColorFiltered(
-                    colorFilter: Utils.getGreyScaleColorFilter(),
-                    child: dotWidget ??
-                        StepperDot(
-                          index: index,
-                          totalLength: totalLength,
-                          activeIndex: activeIndex,
-                        ),
-                  ),
-            Container(
-              color: index == totalLength - 1
-                  ? Colors.transparent
-                  : (index < activeIndex ? activeBarColor : inActiveBarColor),
-              width: gap,
-              height: barHeight,
-            ),
-          ],
-        ),
-      ],
+      children: isInverted ? getInvertedChildren() : getChildren(),
     );
+  }
+
+  List<Widget> getChildren() {
+    return [
+      if (item.title != null && item.title != "") ...[
+        SizedBox(
+            width: gap + 20,
+            child: Text(
+              item.title!,
+              textAlign: TextAlign.center,
+              style: titleTextStyle,
+            )),
+        const SizedBox(height: 4),
+      ],
+      if (item.subtitle != null && item.subtitle != "") ...[
+        SizedBox(
+            width: gap + 20,
+            child: Text(
+              item.subtitle!,
+              textAlign: TextAlign.center,
+              style: subtitleTextStyle,
+            )),
+        const SizedBox(height: 8),
+      ],
+      Row(
+        children: [
+          Container(
+            color: index == 0
+                ? Colors.transparent
+                : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+            width: gap,
+            height: barHeight,
+          ),
+          index <= activeIndex
+              ? dotWidget ??
+                  StepperDot(
+                    index: index,
+                    totalLength: totalLength,
+                    activeIndex: activeIndex,
+                  )
+              : ColorFiltered(
+                  colorFilter: Utils.getGreyScaleColorFilter(),
+                  child: dotWidget ??
+                      StepperDot(
+                        index: index,
+                        totalLength: totalLength,
+                        activeIndex: activeIndex,
+                      ),
+                ),
+          Container(
+            color: index == totalLength - 1
+                ? Colors.transparent
+                : (index < activeIndex ? activeBarColor : inActiveBarColor),
+            width: gap,
+            height: barHeight,
+          ),
+        ],
+      ),
+    ];
+  }
+
+  List<Widget> getInvertedChildren() {
+    return getChildren().reversed.toList();
   }
 }

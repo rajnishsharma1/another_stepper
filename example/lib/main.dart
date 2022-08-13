@@ -42,20 +42,38 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AnotherStepper(
+        body: Column(
+          children: [
+            AnotherStepper(
               stepperList: stepperData,
-              activeIndex: 2,
-              gap: 40,
-              barThickness: 10,
               stepperDirection: Axis.horizontal,
               horizontalStepperHeight: 70,
-              activeBarColor: Colors.blue,
-              inActiveBarColor: Colors.grey,
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: AnotherStepper(
+                stepperList: stepperData,
+                stepperDirection: Axis.vertical,
+                horizontalStepperHeight: 70,
+              ),
+            ),
+            AnotherStepper(
+              stepperList: stepperData,
+              stepperDirection: Axis.horizontal,
+              horizontalStepperHeight: 70,
+              inverted: true,
+            ),
+            AnotherStepper(
+              stepperList: stepperData,
+              stepperDirection: Axis.horizontal,
+              horizontalStepperHeight: 70,
+            ),
+            AnotherStepper(
+              stepperList: stepperData,
+              stepperDirection: Axis.horizontal,
+              horizontalStepperHeight: 70,
+            ),
+          ],
         ),
       ),
     );
