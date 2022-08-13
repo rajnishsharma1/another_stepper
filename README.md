@@ -26,6 +26,20 @@ AnotherStepper(
 #### Output Horizontal(Default)
 ![](display/horizontal_default.png)
 
+#### Vertical(Default)
+```dart
+AnotherStepper(
+  stepperList: stepperData,
+  stepperDirection: Axis.horizontal,
+  horizontalStepperHeight: 70,
+)
+```
+
+<br>
+
+#### Output Vertical(Default)
+![](display/vertical_default.png)
+
 ## Additional information
 
 TODO: Tell users more about the package: where to find more information, how to 

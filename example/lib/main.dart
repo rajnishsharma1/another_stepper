@@ -44,10 +44,13 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child:
-          AnotherStepper(
-            stepperList: stepperData,
-            stepperDirection: Axis.horizontal,
-            horizontalStepperHeight: 70,
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
+            child: AnotherStepper(
+              stepperList: stepperData,
+              stepperDirection: Axis.vertical,
+              horizontalStepperHeight: 70,
+            ),
           ),
         ),
       ),
