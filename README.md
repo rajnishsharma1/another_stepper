@@ -147,7 +147,7 @@ AnotherStepper(
   horizontalStepperHeight: 70,
   inverted: false,
   activeIndex: 2,
-  gap: 60,
+  barThickness: 8,
 )
 ```
 

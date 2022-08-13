@@ -53,17 +53,7 @@ class _MyAppState extends State<MyApp> {
               stepperList: stepperData,
               stepperDirection: Axis.vertical,
               horizontalStepperHeight: 70,
-              dotWidget: Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.all(Radius.circular(30))
-                ),
-                child: Icon(Icons.navigate_next_sharp, color: Colors.white),
-              ),
-              activeBarColor: Colors.red,
-              inActiveBarColor: Colors.grey,
-              activeIndex: 1,
+              barThickness: 8,
             ),
           ),
         ),
