@@ -61,115 +61,23 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              AnotherStepper(
-                stepperList: stepperData1,
-                stepperDirection: Axis.horizontal,
-                horizontalStepperHeight: 70,
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData1,
-                  stepperDirection: Axis.vertical,
-                  horizontalStepperHeight: 70,
-                ),
-              ),
-              const SizedBox(height: 20),
-              AnotherStepper(
-                stepperList: stepperData1,
-                stepperDirection: Axis.horizontal,
-                horizontalStepperHeight: 70,
-                inverted: true,
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData1,
-                  stepperDirection: Axis.vertical,
-                  horizontalStepperHeight: 70,
-                  inverted: true,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData1,
-                  stepperDirection: Axis.vertical,
-                  horizontalStepperHeight: 70,
-                  inverted: false,
-                  activeIndex: 1,
-                  gap: 60,
-                ),
-              ),
-              const SizedBox(height: 20),
-              AnotherStepper(
-                stepperList: stepperData1,
-                stepperDirection: Axis.horizontal,
-                horizontalStepperHeight: 120,
-                inverted: false,
-                activeIndex: 2,
-                gap: 60,
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData,
-                  stepperDirection: Axis.vertical,
-                  horizontalStepperHeight: 70,
-                  inverted: false,
-                  activeIndex: 2,
-                  barThickness: 8,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData,
-                  stepperDirection: Axis.vertical,
-                  horizontalStepperHeight: 70,
-                  dotWidget: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.all(Radius.circular(30))
-                    ),
-                    child: const Icon(Icons.navigate_next_sharp, color: Colors.white),
-                  ),
-                  activeBarColor: Colors.red,
-                  inActiveBarColor: Colors.grey,
-                  activeIndex: 1,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: AnotherStepper(
-                  stepperList: stepperData,
-                  stepperDirection: Axis.vertical,
-                  horizontalStepperHeight: 70,
-                  dotWidget: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.all(Radius.circular(30))),
-                    child: const Icon(Icons.fastfood, color: Colors.white),
-                  ),
-                  activeBarColor: Colors.green,
-                  inActiveBarColor: Colors.grey,
-                  activeIndex: 2,
-                  barThickness: 8,
-                ),
-              ),
-              const SizedBox(height: 20),
-            ],
+        body: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: AnotherStepper(
+            stepperList: stepperData,
+            stepperDirection: Axis.vertical,
+            horizontalStepperHeight: 70,
+            dotWidget: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(30))),
+              child: const Icon(Icons.fastfood, color: Colors.white),
+            ),
+            activeBarColor: Colors.green,
+            inActiveBarColor: Colors.grey,
+            activeIndex: 2,
+            barThickness: 8,
           ),
         ),
       ),
