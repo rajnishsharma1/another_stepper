@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   List<StepperData> stepperData = [
     StepperData(
       title: "Order Placed",
-      subtitle: "Your order has beed placed",
+      subtitle: "Your order has been placed",
     ),
     StepperData(
       title: "Preparing",
@@ -30,21 +30,6 @@ class _MyAppState extends State<MyApp> {
     StepperData(
       title: "Delivered",
       subtitle: "Your order was delivered successfully",
-    ),
-  ];
-
-  List<StepperData> stepperData1 = [
-    StepperData(
-      title: "USA",
-      subtitle: "Hello",
-    ),
-    StepperData(
-      title: "Spain",
-      subtitle: "Hola",
-    ),
-    StepperData(
-      title: "Turkey",
-      subtitle: "Merhaba",
     ),
   ];
 
