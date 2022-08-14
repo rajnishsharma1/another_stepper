@@ -1,3 +1,5 @@
 ## 1.0.1
+* Update physics in ListView
 
-* TODO: Describe initial release.
+## 1.0.0
+* Initial release.
