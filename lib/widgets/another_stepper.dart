@@ -31,6 +31,7 @@ class AnotherStepper extends StatelessWidget {
       color: Colors.grey,
       fontWeight: FontWeight.w500,
     ),
+    this.scrollPhysics,
   }) : super(key: key);
 
   /// Stepper [List] of type [StepperData] to inflate stepper with data
@@ -74,6 +75,9 @@ class AnotherStepper extends StatelessWidget {
   /// [TextStyle] for subtitle
   final TextStyle subtitleTextStyle;
 
+  /// Scroll physics for listview
+  final ScrollPhysics? scrollPhysics;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -81,9 +85,7 @@ class AnotherStepper extends StatelessWidget {
           stepperDirection == Axis.horizontal ? horizontalStepperHeight : null,
       child: ListView.builder(
         shrinkWrap: true,
-        physics: stepperDirection == Axis.vertical
-            ? const NeverScrollableScrollPhysics()
-            : const AlwaysScrollableScrollPhysics(),
+        physics: scrollPhysics ?? const AlwaysScrollableScrollPhysics(),
         itemCount: stepperList.length,
         padding: EdgeInsets.zero,
         scrollDirection: stepperDirection,

@@ -7,6 +7,12 @@ dependencies:
   another_stepper: <latest_version>
 ```
 
+Import the following in your working dart file: 
+```dart
+import 'package:another_stepper/another_stepper.dart';
+import 'package:another_stepper/dto/stepper_data.dart';
+```
+
 ## Example AnotherStepper
 
 #### Dummy StepperData
