@@ -1,7 +1,7 @@
 A flutter package to create easily customizable Horizontal and Vertical stepper.
 
 ## Getting started
-In the ```dependencies```: section of your ```pubspec.yaml```, add the following line:
+In the `dependencies`: section of your `pubspec.yaml`, add the following line:
 ```yaml
 dependencies:
   another_stepper: <latest_version>
@@ -13,19 +13,19 @@ dependencies:
 
 ```dart
   List<StepperData> stepperData = [
-    StepperData(
-      title: "USA",
-      subtitle: "Hello",
-    ),
-    StepperData(
-      title: "Canada",
-      subtitle: "Hey",
-    ),
-    StepperData(
-      title: "Turkey",
-      subtitle: "Hi",
-    ),
-  ];
+  StepperData(
+    title: "USA",
+    subtitle: "Hello",
+  ),
+  StepperData(
+    title: "Spain",
+    subtitle: "Hola",
+  ),
+  StepperData(
+    title: "Turkey",
+    subtitle: "Merhaba",
+  ),
+];
 ```
 
 #### Horizontal(Default)
@@ -140,7 +140,7 @@ AnotherStepper(
 ```dart
 AnotherStepper(
   stepperList: stepperData,
-  stepperDirection: Axis.horizontal,
+  stepperDirection: Axis.vertical,
   horizontalStepperHeight: 70,
   inverted: false,
   activeIndex: 2,
@@ -158,7 +158,7 @@ AnotherStepper(
 ```dart
 AnotherStepper(
   stepperList: stepperData,
-  stepperDirection: Axis.horizontal,
+  stepperDirection: Axis.vertical,
   horizontalStepperHeight: 70,
   dotWidget: Container(
   padding: EdgeInsets.all(8),
@@ -183,7 +183,7 @@ AnotherStepper(
 ```dart
 AnotherStepper(
   stepperList: stepperData,
-  stepperDirection: Axis.horizontal,
+  stepperDirection: Axis.vertical,
   horizontalStepperHeight: 70,
   dotWidget: Container(
   padding: EdgeInsets.all(8),

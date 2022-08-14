@@ -81,6 +81,9 @@ class AnotherStepper extends StatelessWidget {
           stepperDirection == Axis.horizontal ? horizontalStepperHeight : null,
       child: ListView.builder(
         shrinkWrap: true,
+        physics: stepperDirection == Axis.vertical
+            ? const NeverScrollableScrollPhysics()
+            : const AlwaysScrollableScrollPhysics(),
         itemCount: stepperList.length,
         padding: EdgeInsets.zero,
         scrollDirection: stepperDirection,
