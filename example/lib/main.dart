@@ -1,5 +1,4 @@
 import 'package:another_stepper/another_stepper.dart';
-import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
