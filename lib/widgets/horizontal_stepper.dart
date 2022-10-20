@@ -69,7 +69,7 @@ class HorizontalStepperItem extends StatelessWidget {
 
   List<Widget> getChildren() {
     return [
-      if (item.title != null && item.title != "") ...[
+      if (item.title != null) ...[
         SizedBox(
             width: gap + 20,
             child: Text(
@@ -79,7 +79,7 @@ class HorizontalStepperItem extends StatelessWidget {
             )),
         const SizedBox(height: 4),
       ],
-      if (item.subtitle != null && item.subtitle != "") ...[
+      if (item.subtitle != null) ...[
         SizedBox(
             width: gap + 20,
             child: Text(
