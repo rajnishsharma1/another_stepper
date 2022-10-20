@@ -36,9 +36,8 @@ class AnotherStepper extends StatelessWidget {
   /// Stepper [List] of type [StepperData] to inflate stepper with data
   final List<StepperData> stepperList;
 
-  /// Gap between the items in the stepper, Default = 40
-  /// (Recommended to keep it greater than 20 in [Axis.vertical])
-  /// (Recommended to keep it greater than 40 in [Axis.horizontal])
+  /// Gap between the items in the vertical stepper, Default = 40
+  /// Recommended to keep it greater than 20.
   final double gap;
 
   /// Active index, till which [index] the stepper will be highlighted
@@ -100,7 +99,6 @@ class AnotherStepper extends StatelessWidget {
         index: index,
         item: stepperList[index],
         totalLength: stepperList.length,
-        gap: gap,
         activeIndex: activeIndex,
         isInverted: inverted,
         inActiveBarColor: inActiveBarColor ?? Theme.of(context).disabledColor,
