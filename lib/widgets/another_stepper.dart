@@ -17,8 +17,8 @@ class AnotherStepper extends StatelessWidget {
     required this.horizontalStepperHeight,
     required this.stepperDirection,
     this.inverted = false,
-    this.activeBarColor = Colors.blue,
-    this.inActiveBarColor = Colors.grey,
+    this.activeBarColor,
+    this.inActiveBarColor,
     this.barThickness = 2,
     this.dotWidget,
     this.titleTextStyle = const TextStyle(
@@ -58,10 +58,10 @@ class AnotherStepper extends StatelessWidget {
   final bool inverted;
 
   /// Bar color for active step
-  final Color activeBarColor;
+  final Color? activeBarColor;
 
   /// Bar color for inactive step
-  final Color inActiveBarColor;
+  final Color? inActiveBarColor;
 
   /// Bar width/thickness/height
   final double barThickness;
@@ -89,12 +89,12 @@ class AnotherStepper extends StatelessWidget {
         itemCount: stepperList.length,
         padding: EdgeInsets.zero,
         scrollDirection: stepperDirection,
-        itemBuilder: (ctx, index) => getPreferredStepper(index: index),
+        itemBuilder: (ctx, index) => _getPreferredStepper(ctx, index),
       ),
     );
   }
 
-  Widget getPreferredStepper({required int index}) {
+  Widget _getPreferredStepper(BuildContext context, index) {
     if (stepperDirection == Axis.horizontal) {
       return HorizontalStepperItem(
         index: index,
@@ -103,8 +103,8 @@ class AnotherStepper extends StatelessWidget {
         gap: gap,
         activeIndex: activeIndex,
         isInverted: inverted,
-        inActiveBarColor: inActiveBarColor,
-        activeBarColor: activeBarColor,
+        inActiveBarColor: inActiveBarColor ?? Theme.of(context).disabledColor,
+        activeBarColor: inActiveBarColor ?? Theme.of(context).colorScheme.primary,
         barHeight: barThickness,
         dotWidget: dotWidget,
         titleTextStyle: titleTextStyle,
@@ -118,8 +118,8 @@ class AnotherStepper extends StatelessWidget {
         gap: gap,
         activeIndex: activeIndex,
         isInverted: inverted,
-        inActiveBarColor: inActiveBarColor,
-        activeBarColor: activeBarColor,
+        inActiveBarColor: inActiveBarColor ?? Theme.of(context).disabledColor,
+        activeBarColor: inActiveBarColor ?? Theme.of(context).colorScheme.primary,
         barWidth: barThickness,
         dotWidget: dotWidget,
         titleTextStyle: titleTextStyle,
