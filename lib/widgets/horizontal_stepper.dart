@@ -10,6 +10,7 @@ class HorizontalStepperItem extends StatelessWidget {
       required this.item,
       required this.index,
       required this.totalLength,
+      required this.gap,
       required this.activeIndex,
       required this.isInverted,
       required this.activeBarColor,
@@ -31,6 +32,9 @@ class HorizontalStepperItem extends StatelessWidget {
 
   /// Active index which needs to be highlighted and before that
   final int activeIndex;
+
+  /// Gap between the items in the stepper
+  final double gap;
 
   /// Inverts the stepper with text that is being used
   final bool isInverted;
@@ -55,26 +59,19 @@ class HorizontalStepperItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment:
-            isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
-        children: isInverted ? getInvertedChildren() : getChildren(),
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment:
+          isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
+      children: isInverted ? getInvertedChildren() : getChildren(),
     );
   }
 
   List<Widget> getChildren() {
-    final Widget dot = dotWidget ??
-        StepperDot(
-          index: index,
-          totalLength: totalLength,
-          activeIndex: activeIndex,
-        );
     return [
-      if (item.title != null) ...[
+      if (item.title != null && item.title != "") ...[
         SizedBox(
+            width: gap + 20,
             child: Text(
               item.title!,
               textAlign: TextAlign.center,
@@ -82,8 +79,9 @@ class HorizontalStepperItem extends StatelessWidget {
             )),
         const SizedBox(height: 4),
       ],
-      if (item.subtitle != null) ...[
+      if (item.subtitle != null && item.subtitle != "") ...[
         SizedBox(
+            width: gap + 20,
             child: Text(
               item.subtitle!,
               textAlign: TextAlign.center,
@@ -93,27 +91,35 @@ class HorizontalStepperItem extends StatelessWidget {
       ],
       Row(
         children: [
-          Flexible(
-            child: Container(
-              color: index == 0
-                  ? Colors.transparent
-                  : (index <= activeIndex ? activeBarColor : inActiveBarColor),
-              height: barHeight,
-            ),
+          Container(
+            color: index == 0
+                ? Colors.transparent
+                : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+            width: gap,
+            height: barHeight,
           ),
           index <= activeIndex
-              ? dot
+              ? dotWidget ??
+                  StepperDot(
+                    index: index,
+                    totalLength: totalLength,
+                    activeIndex: activeIndex,
+                  )
               : ColorFiltered(
                   colorFilter: Utils.getGreyScaleColorFilter(),
-                  child: dot,
+                  child: dotWidget ??
+                      StepperDot(
+                        index: index,
+                        totalLength: totalLength,
+                        activeIndex: activeIndex,
+                      ),
                 ),
-          Flexible(
-            child: Container(
-              color: index == totalLength - 1
-                  ? Colors.transparent
-                  : (index < activeIndex ? activeBarColor : inActiveBarColor),
-              height: barHeight,
-            ),
+          Container(
+            color: index == totalLength - 1
+                ? Colors.transparent
+                : (index < activeIndex ? activeBarColor : inActiveBarColor),
+            width: gap,
+            height: barHeight,
           ),
         ],
       ),
