@@ -14,11 +14,10 @@ class AnotherStepper extends StatelessWidget {
     required this.stepperList,
     this.gap = 40,
     this.activeIndex = 0,
-    required this.horizontalStepperHeight,
     required this.stepperDirection,
     this.inverted = false,
-    this.activeBarColor = Colors.blue,
-    this.inActiveBarColor = Colors.grey,
+    this.activeBarColor,
+    this.inActiveBarColor,
     this.barThickness = 2,
     this.dotWidget,
     this.titleTextStyle = const TextStyle(
@@ -37,17 +36,12 @@ class AnotherStepper extends StatelessWidget {
   /// Stepper [List] of type [StepperData] to inflate stepper with data
   final List<StepperData> stepperList;
 
-  /// Gap between the items in the stepper, Default = 40
-  /// (Recommended to keep it greater than 20 in [Axis.vertical])
-  /// (Recommended to keep it greater than 40 in [Axis.horizontal])
+  /// Gap between the items in the vertical stepper, Default = 40
+  /// Recommended to keep it greater than 20.
   final double gap;
 
   /// Active index, till which [index] the stepper will be highlighted
   final int activeIndex;
-
-  /// Use Horizontal Stepper Height when using Horizontal stepper
-  /// To provide the total height of the stepper
-  final double horizontalStepperHeight;
 
   /// Stepper direction takes [Axis]
   /// Use [Axis.horizontal] to get horizontal stepper
@@ -58,10 +52,10 @@ class AnotherStepper extends StatelessWidget {
   final bool inverted;
 
   /// Bar color for active step
-  final Color activeBarColor;
+  final Color? activeBarColor;
 
   /// Bar color for inactive step
-  final Color inActiveBarColor;
+  final Color? inActiveBarColor;
 
   /// Bar width/thickness/height
   final double barThickness;
@@ -80,31 +74,36 @@ class AnotherStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var caa = stepperDirection == Axis.horizontal
+        ? CrossAxisAlignment.end
+        : CrossAxisAlignment.start;
+    if (inverted) { // invert Alignment
+      caa = caa == CrossAxisAlignment.end
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end;
+    }
+    final Iterable<int> iter = Iterable<int>.generate(stepperList.length);
     return SizedBox(
-      height:
-          stepperDirection == Axis.horizontal ? horizontalStepperHeight : null,
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: scrollPhysics ?? const AlwaysScrollableScrollPhysics(),
-        itemCount: stepperList.length,
-        padding: EdgeInsets.zero,
-        scrollDirection: stepperDirection,
-        itemBuilder: (ctx, index) => getPreferredStepper(index: index),
+      child: Flex(
+        crossAxisAlignment: caa,
+        direction: stepperDirection,
+        children:
+            iter.map((index) => _getPreferredStepper(context, index)).toList(),
       ),
     );
   }
 
-  Widget getPreferredStepper({required int index}) {
+  Widget _getPreferredStepper(BuildContext context, index) {
     if (stepperDirection == Axis.horizontal) {
       return HorizontalStepperItem(
         index: index,
         item: stepperList[index],
         totalLength: stepperList.length,
-        gap: gap,
         activeIndex: activeIndex,
         isInverted: inverted,
-        inActiveBarColor: inActiveBarColor,
-        activeBarColor: activeBarColor,
+        inActiveBarColor: inActiveBarColor ?? Theme.of(context).disabledColor,
+        activeBarColor:
+            inActiveBarColor ?? Theme.of(context).colorScheme.primary,
         barHeight: barThickness,
         dotWidget: dotWidget,
         titleTextStyle: titleTextStyle,
@@ -118,8 +117,9 @@ class AnotherStepper extends StatelessWidget {
         gap: gap,
         activeIndex: activeIndex,
         isInverted: inverted,
-        inActiveBarColor: inActiveBarColor,
-        activeBarColor: activeBarColor,
+        inActiveBarColor: inActiveBarColor ?? Theme.of(context).disabledColor,
+        activeBarColor:
+            inActiveBarColor ?? Theme.of(context).colorScheme.primary,
         barWidth: barThickness,
         dotWidget: dotWidget,
         titleTextStyle: titleTextStyle,
