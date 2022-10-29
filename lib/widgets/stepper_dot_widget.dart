@@ -20,13 +20,12 @@ class StepperDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = (index <= activeIndex) ? Theme.of(context).colorScheme.primary : Theme.of(context).disabledColor;
     return Container(
       height: 18,
       width: 18,
       decoration: BoxDecoration(
         border: Border.all(
-          color: color,
+          color: (index <= activeIndex) ? Colors.blue : Colors.grey,
           width: 1,
         ),
         borderRadius: const BorderRadius.all(
@@ -38,9 +37,9 @@ class StepperDot extends StatelessWidget {
         width: 14,
         margin: const EdgeInsets.all(2),
         decoration: BoxDecoration(
-          color: color,
+          color: (index <= activeIndex) ? Colors.blue : Colors.grey,
           border: Border.all(
-            color: color,
+            color: (index <= activeIndex) ? Colors.blue : Colors.grey,
             width: 1,
           ),
           borderRadius: const BorderRadius.all(

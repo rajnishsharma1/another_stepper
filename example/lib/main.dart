@@ -1,4 +1,5 @@
 import 'package:another_stepper/another_stepper.dart';
+import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,19 +15,19 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<StepperData> stepperData = [
-    const StepperData(
+    StepperData(
       title: "Order Placed",
       subtitle: "Your order has been placed",
     ),
-    const StepperData(
+    StepperData(
       title: "Preparing",
       subtitle: "Your order is being prepared",
     ),
-    const StepperData(
+    StepperData(
       title: "On the way",
       subtitle: "Our delivery executive is on the way to deliver your item",
     ),
-    const StepperData(
+    StepperData(
       title: "Delivered",
       subtitle: "Your order was delivered successfully",
     ),
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
           child: AnotherStepper(
             stepperList: stepperData,
             stepperDirection: Axis.vertical,
+            horizontalStepperHeight: 70,
             dotWidget: Container(
               padding: const EdgeInsets.all(8),
               decoration: const BoxDecoration(

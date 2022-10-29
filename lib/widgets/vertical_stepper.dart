@@ -106,14 +106,14 @@ class VerticalStepperItem extends StatelessWidget {
           crossAxisAlignment:
               isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
-            if (item.title != null) ...[
+            if (item.title != null && item.title != "") ...[
               Text(
                 item.title!,
                 textAlign: TextAlign.start,
                 style: titleTextStyle,
               ),
             ],
-            if (item.subtitle != null) ...[
+            if (item.subtitle != null && item.subtitle != "") ...[
               const SizedBox(height: 8),
               Text(
                 item.subtitle!,
