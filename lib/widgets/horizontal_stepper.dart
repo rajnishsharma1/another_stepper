@@ -17,8 +17,8 @@ class HorizontalStepperItem extends StatelessWidget {
       required this.barHeight,
       required this.titleTextStyle,
       required this.subtitleTextStyle,
-       this.iconHeight,
-       this.iconWidth})
+      this.iconHeight,
+      this.iconWidth})
       : super(key: key);
 
   /// Stepper item of type [StepperData] to inflate stepper with data

@@ -18,8 +18,8 @@ class VerticalStepperItem extends StatelessWidget {
       required this.barWidth,
       required this.titleTextStyle,
       required this.subtitleTextStyle,
-       this.iconHeight,
-       this.iconWidth})
+      this.iconHeight,
+      this.iconWidth})
       : super(key: key);
 
   /// Stepper item of type [StepperData] to inflate stepper with data
