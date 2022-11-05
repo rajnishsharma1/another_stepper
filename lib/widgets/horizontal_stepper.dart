@@ -15,9 +15,10 @@ class HorizontalStepperItem extends StatelessWidget {
       required this.activeBarColor,
       required this.inActiveBarColor,
       required this.barHeight,
-      required this.dotWidget,
       required this.titleTextStyle,
-      required this.subtitleTextStyle})
+      required this.subtitleTextStyle,
+       this.iconHeight,
+       this.iconWidth})
       : super(key: key);
 
   /// Stepper item of type [StepperData] to inflate stepper with data
@@ -44,14 +45,17 @@ class HorizontalStepperItem extends StatelessWidget {
   /// Bar height/thickness
   final double barHeight;
 
-  /// [Widget] for dot/point
-  final Widget? dotWidget;
-
   /// [TextStyle] for title
   final TextStyle titleTextStyle;
 
   /// [TextStyle] for subtitle
   final TextStyle subtitleTextStyle;
+
+  /// Height of [StepperData.iconWidget]
+  final double? iconHeight;
+
+  /// Width of [StepperData.iconWidget]
+  final double? iconWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -66,30 +70,34 @@ class HorizontalStepperItem extends StatelessWidget {
   }
 
   List<Widget> getChildren() {
-    final Widget dot = dotWidget ??
-        StepperDot(
-          index: index,
-          totalLength: totalLength,
-          activeIndex: activeIndex,
-        );
+    final Widget dot = SizedBox(
+      height: iconHeight,
+      width: iconWidth,
+      child: item.iconWidget ??
+          StepperDot(
+            index: index,
+            totalLength: totalLength,
+            activeIndex: activeIndex,
+          ),
+    );
 
     return [
       if (item.title != null) ...[
         SizedBox(
             child: Text(
-              item.title!,
-              textAlign: TextAlign.center,
-              style: titleTextStyle,
-            )),
+          item.title!,
+          textAlign: TextAlign.center,
+          style: titleTextStyle,
+        )),
         const SizedBox(height: 4),
       ],
       if (item.subtitle != null) ...[
         SizedBox(
             child: Text(
-              item.subtitle!,
-              textAlign: TextAlign.center,
-              style: subtitleTextStyle,
-            )),
+          item.subtitle!,
+          textAlign: TextAlign.center,
+          style: subtitleTextStyle,
+        )),
         const SizedBox(height: 8),
       ],
       Row(

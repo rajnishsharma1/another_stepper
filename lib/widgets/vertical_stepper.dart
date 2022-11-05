@@ -16,9 +16,10 @@ class VerticalStepperItem extends StatelessWidget {
       required this.activeBarColor,
       required this.inActiveBarColor,
       required this.barWidth,
-      required this.dotWidget,
       required this.titleTextStyle,
-      required this.subtitleTextStyle})
+      required this.subtitleTextStyle,
+       this.iconHeight,
+       this.iconWidth})
       : super(key: key);
 
   /// Stepper item of type [StepperData] to inflate stepper with data
@@ -48,14 +49,17 @@ class VerticalStepperItem extends StatelessWidget {
   /// Bar width/thickness
   final double barWidth;
 
-  /// [Widget] for dot/point
-  final Widget? dotWidget;
-
   /// [TextStyle] for title
   final TextStyle titleTextStyle;
 
   /// [TextStyle] for subtitle
   final TextStyle subtitleTextStyle;
+
+  /// Height of [StepperData.iconWidget]
+  final double? iconHeight;
+
+  /// Width of [StepperData.iconWidget]
+  final double? iconWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -76,20 +80,28 @@ class VerticalStepperItem extends StatelessWidget {
             height: gap,
           ),
           index <= activeIndex
-              ? dotWidget ??
-                  StepperDot(
-                    index: index,
-                    totalLength: totalLength,
-                    activeIndex: activeIndex,
-                  )
-              : ColorFiltered(
-                  colorFilter: Utils.getGreyScaleColorFilter(),
-                  child: dotWidget ??
+              ? SizedBox(
+                  height: iconHeight,
+                  width: iconWidth,
+                  child: item.iconWidget ??
                       StepperDot(
                         index: index,
                         totalLength: totalLength,
                         activeIndex: activeIndex,
                       ),
+                )
+              : ColorFiltered(
+                  colorFilter: Utils.getGreyScaleColorFilter(),
+                  child: SizedBox(
+                    height: iconHeight,
+                    width: iconWidth,
+                    child: item.iconWidget ??
+                        StepperDot(
+                          index: index,
+                          totalLength: totalLength,
+                          activeIndex: activeIndex,
+                        ),
+                  ),
                 ),
           Container(
             color: index == totalLength - 1

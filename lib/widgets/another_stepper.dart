@@ -19,7 +19,6 @@ class AnotherStepper extends StatelessWidget {
     this.activeBarColor = Colors.blue,
     this.inActiveBarColor = Colors.grey,
     this.barThickness = 2,
-    this.dotWidget,
     this.titleTextStyle = const TextStyle(
       fontSize: 14,
       color: Colors.black,
@@ -31,6 +30,8 @@ class AnotherStepper extends StatelessWidget {
       fontWeight: FontWeight.w500,
     ),
     this.scrollPhysics,
+    this.iconHeight,
+    this.iconWidth,
   }) : super(key: key);
 
   /// Stepper [List] of type [StepperData] to inflate stepper with data
@@ -61,8 +62,15 @@ class AnotherStepper extends StatelessWidget {
   /// Bar width/thickness/height
   final double barThickness;
 
-  /// [Widget] for dot/point
-  final Widget? dotWidget;
+  /// Height of [StepperData.iconWidget]
+  ///
+  /// Default value = 20
+  final double? iconHeight;
+
+  /// Width of [StepperData.iconWidget]
+  ///
+  /// Default value = 20
+  final double? iconWidth;
 
   /// [TextStyle] for title
   final TextStyle titleTextStyle;
@@ -105,9 +113,10 @@ class AnotherStepper extends StatelessWidget {
         inActiveBarColor: inActiveBarColor,
         activeBarColor: activeBarColor,
         barHeight: barThickness,
-        dotWidget: dotWidget,
         titleTextStyle: titleTextStyle,
         subtitleTextStyle: subtitleTextStyle,
+        iconHeight: iconHeight,
+        iconWidth: iconWidth,
       );
     } else {
       return VerticalStepperItem(
@@ -120,9 +129,10 @@ class AnotherStepper extends StatelessWidget {
         inActiveBarColor: inActiveBarColor,
         activeBarColor: activeBarColor,
         barWidth: barThickness,
-        dotWidget: dotWidget,
         titleTextStyle: titleTextStyle,
         subtitleTextStyle: subtitleTextStyle,
+        iconHeight: iconHeight,
+        iconWidth: iconWidth,
       );
     }
   }

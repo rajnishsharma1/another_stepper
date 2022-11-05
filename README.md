@@ -10,7 +10,6 @@ dependencies:
 Import the following in your working dart file: 
 ```dart
 import 'package:another_stepper/another_stepper.dart';
-import 'package:another_stepper/dto/stepper_data.dart';
 ```
 
 ## Example AnotherStepper
@@ -20,16 +19,40 @@ import 'package:another_stepper/dto/stepper_data.dart';
 ```dart
   List<StepperData> stepperData = [
   StepperData(
-    title: "USA",
-    subtitle: "Hello",
+      title: "Order Placed",
+      subtitle: "Your order has been placed",
+      iconWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.looks_one, color: Colors.white),
+      )
   ),
   StepperData(
-    title: "Spain",
-    subtitle: "Hola",
+      title: "Preparing",
+      subtitle: "Your order is being prepared",
+      iconWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.looks_two, color: Colors.white),
+      )
   ),
   StepperData(
-    title: "Turkey",
-    subtitle: "Merhaba",
+      title: "On the way",
+      subtitle: "Our delivery executive is on the way to deliver your item",
+      iconWidget: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(30))),
+        child: const Icon(Icons.looks_3, color: Colors.white),
+      )
+  ),
+  StepperData(
+    title: "Delivered",
   ),
 ];
 ```
@@ -38,8 +61,7 @@ import 'package:another_stepper/dto/stepper_data.dart';
 ```dart
 AnotherStepper(
   stepperList: stepperData,
-  stepperDirection: Axis.horizontal,
-  horizontalStepperHeight: 70,
+  stepperDirection: Axis.horizontal
 )
 ```
 
@@ -53,7 +75,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
 )
 ```
 
@@ -67,7 +88,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.horizontal,
-  horizontalStepperHeight: 70,
   inverted: true,
 )
 ```
@@ -82,7 +102,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
   inverted: true,
 )
 ```
@@ -97,7 +116,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
   inverted: false,
   activeIndex: 2,
 )
@@ -113,7 +131,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
   inverted: false,
   activeIndex: 2,
   gap: 60,
@@ -130,7 +147,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.horizontal,
-  horizontalStepperHeight: 70,
   inverted: false,
   activeIndex: 2,
   gap: 60,
@@ -147,7 +163,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
   inverted: false,
   activeIndex: 2,
   barThickness: 8,
@@ -165,7 +180,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
   dotWidget: Container(
   padding: EdgeInsets.all(8),
   decoration: BoxDecoration(
@@ -190,7 +204,6 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
-  horizontalStepperHeight: 70,
   dotWidget: Container(
   padding: EdgeInsets.all(8),
   decoration: BoxDecoration(

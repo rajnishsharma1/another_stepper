@@ -1,3 +1,8 @@
+## 1.1.4
+* [Deprecated] horizontalStepperHeight. Now the height will be auto adjusted
+* Add Stepper Icon for each Stepper point
+* Converted title and subtitle to nullable
+
 ## 1.0.4
 * Update example
 
