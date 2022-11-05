@@ -14,7 +14,6 @@ class AnotherStepper extends StatelessWidget {
     required this.stepperList,
     this.gap = 40,
     this.activeIndex = 0,
-    required this.horizontalStepperHeight,
     required this.stepperDirection,
     this.inverted = false,
     this.activeBarColor = Colors.blue,
@@ -45,13 +44,9 @@ class AnotherStepper extends StatelessWidget {
   /// Active index, till which [index] the stepper will be highlighted
   final int activeIndex;
 
-  /// Use Horizontal Stepper Height when using Horizontal stepper
-  /// To provide the total height of the stepper
-  final double horizontalStepperHeight;
-
   /// Stepper direction takes [Axis]
   /// Use [Axis.horizontal] to get horizontal stepper
-  /// /// Use [Axis.vertical] to get vertical stepper
+  /// Use [Axis.vertical] to get vertical stepper
   final Axis stepperDirection;
 
   /// Inverts the stepper with text that is being used
@@ -80,27 +75,31 @@ class AnotherStepper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height:
-          stepperDirection == Axis.horizontal ? horizontalStepperHeight : null,
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: scrollPhysics ?? const AlwaysScrollableScrollPhysics(),
-        itemCount: stepperList.length,
-        padding: EdgeInsets.zero,
-        scrollDirection: stepperDirection,
-        itemBuilder: (ctx, index) => getPreferredStepper(index: index),
-      ),
+    var crossAxisAlign = stepperDirection == Axis.horizontal
+        ? CrossAxisAlignment.end
+        : CrossAxisAlignment.start;
+    if (inverted) {
+      // invert Alignment in case of [Axis.vertical]
+      crossAxisAlign = crossAxisAlign == CrossAxisAlignment.end
+          ? CrossAxisAlignment.start
+          : CrossAxisAlignment.end;
+    }
+    final Iterable<int> iterable = Iterable<int>.generate(stepperList.length);
+    return Flex(
+      crossAxisAlignment: crossAxisAlign,
+      direction: stepperDirection,
+      children: iterable
+          .map((index) => _getPreferredStepper(context, index: index))
+          .toList(),
     );
   }
 
-  Widget getPreferredStepper({required int index}) {
+  Widget _getPreferredStepper(BuildContext context, {required int index}) {
     if (stepperDirection == Axis.horizontal) {
       return HorizontalStepperItem(
         index: index,
         item: stepperList[index],
         totalLength: stepperList.length,
-        gap: gap,
         activeIndex: activeIndex,
         isInverted: inverted,
         inActiveBarColor: inActiveBarColor,
