@@ -1,3 +1,6 @@
+## 1.1.5
+* File formatting
+
 ## 1.1.4
 * [Deprecated] horizontalStepperHeight. Now the height will be auto adjusted
 * Add Stepper Icon for each Stepper point
