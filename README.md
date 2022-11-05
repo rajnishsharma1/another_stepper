@@ -61,7 +61,9 @@ import 'package:another_stepper/another_stepper.dart';
 ```dart
 AnotherStepper(
   stepperList: stepperData,
-  stepperDirection: Axis.horizontal
+  stepperDirection: Axis.horizontal,
+  iconWidth: 40, // Height that will be applied to all the stepper icons
+  iconHeight: 40, // Width that will be applied to all the stepper icons
 )
 ```
 
@@ -75,6 +77,8 @@ AnotherStepper(
 AnotherStepper(
   stepperList: stepperData,
   stepperDirection: Axis.vertical,
+  iconWidth: 40, // Height that will be applied to all the stepper icons
+  iconHeight: 40, // Width that will be applied to all the stepper icons
 )
 ```
 
