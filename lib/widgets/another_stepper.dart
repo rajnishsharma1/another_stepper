@@ -19,16 +19,6 @@ class AnotherStepper extends StatelessWidget {
     this.activeBarColor = Colors.blue,
     this.inActiveBarColor = Colors.grey,
     this.barThickness = 2,
-    this.titleTextStyle = const TextStyle(
-      fontSize: 14,
-      color: Colors.black,
-      fontWeight: FontWeight.w600,
-    ),
-    this.subtitleTextStyle = const TextStyle(
-      fontSize: 12,
-      color: Colors.grey,
-      fontWeight: FontWeight.w500,
-    ),
     this.scrollPhysics,
     this.iconHeight,
     this.iconWidth,
@@ -72,12 +62,6 @@ class AnotherStepper extends StatelessWidget {
   /// Default value = 20
   final double? iconWidth;
 
-  /// [TextStyle] for title
-  final TextStyle titleTextStyle;
-
-  /// [TextStyle] for subtitle
-  final TextStyle subtitleTextStyle;
-
   /// Scroll physics for listview
   final ScrollPhysics? scrollPhysics;
 
@@ -113,8 +97,6 @@ class AnotherStepper extends StatelessWidget {
         inActiveBarColor: inActiveBarColor,
         activeBarColor: activeBarColor,
         barHeight: barThickness,
-        titleTextStyle: titleTextStyle,
-        subtitleTextStyle: subtitleTextStyle,
         iconHeight: iconHeight,
         iconWidth: iconWidth,
       );
@@ -129,8 +111,6 @@ class AnotherStepper extends StatelessWidget {
         inActiveBarColor: inActiveBarColor,
         activeBarColor: activeBarColor,
         barWidth: barThickness,
-        titleTextStyle: titleTextStyle,
-        subtitleTextStyle: subtitleTextStyle,
         iconHeight: iconHeight,
         iconWidth: iconWidth,
       );

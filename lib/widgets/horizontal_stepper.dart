@@ -15,8 +15,6 @@ class HorizontalStepperItem extends StatelessWidget {
       required this.activeBarColor,
       required this.inActiveBarColor,
       required this.barHeight,
-      required this.titleTextStyle,
-      required this.subtitleTextStyle,
       this.iconHeight,
       this.iconWidth})
       : super(key: key);
@@ -44,12 +42,6 @@ class HorizontalStepperItem extends StatelessWidget {
 
   /// Bar height/thickness
   final double barHeight;
-
-  /// [TextStyle] for title
-  final TextStyle titleTextStyle;
-
-  /// [TextStyle] for subtitle
-  final TextStyle subtitleTextStyle;
 
   /// Height of [StepperData.iconWidget]
   final double? iconHeight;
@@ -84,20 +76,32 @@ class HorizontalStepperItem extends StatelessWidget {
     return [
       if (item.title != null) ...[
         SizedBox(
-            child: Text(
-          item.title!,
-          textAlign: TextAlign.center,
-          style: titleTextStyle,
-        )),
+          child: Text(
+            item.title!.text,
+            textAlign: TextAlign.center,
+            style: item.title!.textStyle ??
+                const TextStyle(
+                  fontSize: 14,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+        ),
         const SizedBox(height: 4),
       ],
       if (item.subtitle != null) ...[
         SizedBox(
-            child: Text(
-          item.subtitle!,
-          textAlign: TextAlign.center,
-          style: subtitleTextStyle,
-        )),
+          child: Text(
+            item.subtitle!.text,
+            textAlign: TextAlign.center,
+            style: item.subtitle!.textStyle ??
+                const TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
+        ),
         const SizedBox(height: 8),
       ],
       Row(

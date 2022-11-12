@@ -15,8 +15,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<StepperData> stepperData = [
     StepperData(
-        title: "Order Placed",
-        subtitle: "Your order has been placed",
+        title: StepperText(
+          "Order Placed",
+          textStyle: const TextStyle(
+            color: Colors.grey,
+          ),
+        ),
+        subtitle: StepperText("Your order has been placed"),
         iconWidget: Container(
           padding: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
@@ -25,8 +30,8 @@ class _MyAppState extends State<MyApp> {
           child: const Icon(Icons.looks_one, color: Colors.white),
         )),
     StepperData(
-        title: "Preparing",
-        subtitle: "Your order is being prepared",
+        title: StepperText("Preparing"),
+        subtitle: StepperText("Your order is being prepared"),
         iconWidget: Container(
           padding: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
@@ -35,8 +40,9 @@ class _MyAppState extends State<MyApp> {
           child: const Icon(Icons.looks_two, color: Colors.white),
         )),
     StepperData(
-        title: "On the way",
-        subtitle: "Our delivery executive is on the way to deliver your item",
+        title: StepperText("On the way"),
+        subtitle: StepperText(
+            "Our delivery executive is on the way to deliver your item"),
         iconWidget: Container(
           padding: const EdgeInsets.all(8),
           decoration: const BoxDecoration(
@@ -45,7 +51,10 @@ class _MyAppState extends State<MyApp> {
           child: const Icon(Icons.looks_3, color: Colors.white),
         )),
     StepperData(
-      title: "Delivered",
+      title: StepperText("Delivered",
+          textStyle: const TextStyle(
+            color: Colors.grey,
+          )),
     ),
   ];
 

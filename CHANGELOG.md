@@ -1,3 +1,7 @@
+## 1.1.6
+* Add TextStyles to each step using [StepperText]
+* [Deprecated] titleTextStyle and subtitleTextStyle from package
+
 ## 1.1.5
 * File formatting
 
