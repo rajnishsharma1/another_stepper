@@ -1,3 +1,4 @@
+import 'package:another_stepper/dto/handle_event.dart';
 import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:another_stepper/utils/utils.dart';
 import 'package:another_stepper/widgets/stepper_dot_widget.dart';
@@ -49,16 +50,49 @@ class HorizontalStepperItem extends StatelessWidget {
   /// Width of [StepperData.iconWidget]
   final double? iconWidth;
 
+  bool isWidgetTouchEnabled(StepperData widget) {
+    return widget.onTab != null ||
+        widget.onDoubleTab != null ||
+        widget.onLongPress != null ||
+        widget.onTabDown != null ||
+        widget.onTabUp != null;
+  }
+
+  bool get enabled => isWidgetTouchEnabled(item);
+
+  void handleTabEvent(
+      {required OnTouchHandleType type,
+      TapDownDetails? downDetails,
+      TapUpDetails? upDetails}) {
+    if (!enabled) {
+      return;
+    }
+    if (type == OnTouchHandleType.onTab) {
+      item.onTab?.call(index);
+    }
+    if (type == OnTouchHandleType.onTabUp) {
+      item.onTabUp?.call(index);
+    }
+    if (type == OnTouchHandleType.onTabDown) {
+      item.onTabDown?.call(index);
+    }
+    if (type == OnTouchHandleType.onDoubleTab) {
+      item.onDoubleTab?.call(index);
+    }
+    if (type == OnTouchHandleType.onLongPress) {
+      item.onLongPress?.call(index);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment:
-            isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
-        children: isInverted ? getInvertedChildren() : getChildren(),
-      ),
-    );
+        child: Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment:
+          isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
+      children: isInverted ? getInvertedChildren() : getChildren(),
+    ));
   }
 
   List<Widget> getChildren() {
@@ -72,64 +106,91 @@ class HorizontalStepperItem extends StatelessWidget {
             activeIndex: activeIndex,
           ),
     );
+    List<Widget> widget = [];
+    if (!isInverted) {
+      item.title != null
+          ? widget.addAll([item.title!, const SizedBox(height: 4)])
+          : null;
+      item.subtitle != null
+          ? widget.addAll([item.subtitle!, const SizedBox(height: 8)])
+          : null;
+    } else {
+      item.subtitle != null
+          ? widget.addAll([const SizedBox(height: 8), item.subtitle!])
+          : null;
+      item.title != null
+          ? widget.addAll([const SizedBox(height: 4), item.title!])
+          : null;
+    }
 
     return [
-      if (item.title != null) ...[
-        SizedBox(
-          child: Text(
-            item.title!.text,
-            textAlign: TextAlign.center,
-            style: item.title!.textStyle ??
-                const TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-          ),
-        ),
-        const SizedBox(height: 4),
-      ],
-      if (item.subtitle != null) ...[
-        SizedBox(
-          child: Text(
-            item.subtitle!.text,
-            textAlign: TextAlign.center,
-            style: item.subtitle!.textStyle ??
-                const TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
-                ),
-          ),
-        ),
-        const SizedBox(height: 8),
-      ],
-      Row(
-        children: [
-          Flexible(
-            child: Container(
-              color: index == 0
-                  ? Colors.transparent
-                  : (index <= activeIndex ? activeBarColor : inActiveBarColor),
-              height: barHeight,
-            ),
-          ),
-          index <= activeIndex
-              ? dot
-              : ColorFiltered(
-                  colorFilter: Utils.getGreyScaleColorFilter(),
-                  child: dot,
-                ),
-          Flexible(
-            child: Container(
-              color: index == totalLength - 1
-                  ? Colors.transparent
-                  : (index < activeIndex ? activeBarColor : inActiveBarColor),
-              height: barHeight,
-            ),
-          ),
-        ],
+      GestureDetector(
+        onTap: enabled
+            ? () => handleTabEvent(type: OnTouchHandleType.onTab)
+            : null,
+        onDoubleTap: enabled
+            ? () => handleTabEvent(type: OnTouchHandleType.onDoubleTab)
+            : null,
+        onLongPress: enabled
+            ? () => handleTabEvent(type: OnTouchHandleType.onLongPress)
+            : null,
+        onTapDown: enabled
+            ? (e) => handleTabEvent(
+                type: OnTouchHandleType.onTabDown, downDetails: e)
+            : null,
+        onTapUp: enabled
+            ? (e) =>
+                handleTabEvent(type: OnTouchHandleType.onTabUp, upDetails: e)
+            : null,
+        child: Column(children: widget),
       ),
+      GestureDetector(
+        onTap: enabled
+            ? () => handleTabEvent(type: OnTouchHandleType.onTab)
+            : null,
+        onDoubleTap: enabled
+            ? () => handleTabEvent(type: OnTouchHandleType.onDoubleTab)
+            : null,
+        onLongPress: enabled
+            ? () => handleTabEvent(type: OnTouchHandleType.onLongPress)
+            : null,
+        onTapDown: enabled
+            ? (e) => handleTabEvent(
+                type: OnTouchHandleType.onTabDown, downDetails: e)
+            : null,
+        onTapUp: enabled
+            ? (e) =>
+                handleTabEvent(type: OnTouchHandleType.onTabUp, upDetails: e)
+            : null,
+        child: Row(
+          children: [
+            Flexible(
+              child: Container(
+                color: index == 0
+                    ? Colors.transparent
+                    : (index <= activeIndex
+                        ? activeBarColor
+                        : inActiveBarColor),
+                height: barHeight,
+              ),
+            ),
+            index <= activeIndex
+                ? dot
+                : ColorFiltered(
+                    colorFilter: Utils.getGreyScaleColorFilter(),
+                    child: dot,
+                  ),
+            Flexible(
+              child: Container(
+                color: index == totalLength - 1
+                    ? Colors.transparent
+                    : (index < activeIndex ? activeBarColor : inActiveBarColor),
+                height: barHeight,
+              ),
+            ),
+          ],
+        ),
+      )
     ];
   }
 

@@ -12,6 +12,8 @@ class AnotherStepper extends StatelessWidget {
   const AnotherStepper({
     Key? key,
     required this.stepperList,
+    this.stepperDataTitleWhiteSpace = 4,
+    this.stepperDataSubTitleWhiteSpace = 8,
     this.gap = 40,
     this.activeIndex = 0,
     required this.stepperDirection,
@@ -32,6 +34,8 @@ class AnotherStepper extends StatelessWidget {
   /// (Recommended to keep it greater than 40 in [Axis.horizontal])
   final double gap;
 
+  final int stepperDataTitleWhiteSpace;
+  final int stepperDataSubTitleWhiteSpace;
   /// Active index, till which [index] the stepper will be highlighted
   final int activeIndex;
 

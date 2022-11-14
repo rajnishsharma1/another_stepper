@@ -1,3 +1,4 @@
+import 'package:another_stepper/dto/handle_event.dart';
 import 'package:another_stepper/dto/stepper_data.dart';
 import 'package:another_stepper/utils/utils.dart';
 import 'package:another_stepper/widgets/stepper_dot_widget.dart';
@@ -53,6 +54,40 @@ class VerticalStepperItem extends StatelessWidget {
   /// Width of [StepperData.iconWidget]
   final double? iconWidth;
 
+  bool isWidgetTouchEnabled(StepperData widget) {
+    return widget.onTab != null ||
+        widget.onDoubleTab != null ||
+        widget.onLongPress != null ||
+        widget.onTabDown != null ||
+        widget.onTabUp != null;
+  }
+
+  bool get enabled => isWidgetTouchEnabled(item);
+
+  void handleTabEvent(
+      {required OnTouchHandleType type,
+      TapDownDetails? downDetails,
+      TapUpDetails? upDetails}) {
+    if (!enabled) {
+      return;
+    }
+    if (type == OnTouchHandleType.onTab) {
+      item.onTab?.call(index);
+    }
+    if (type == OnTouchHandleType.onTabUp) {
+      item.onTabUp?.call(index);
+    }
+    if (type == OnTouchHandleType.onTabDown) {
+      item.onTabDown?.call(index);
+    }
+    if (type == OnTouchHandleType.onDoubleTab) {
+      item.onDoubleTab?.call(index);
+    }
+    if (type == OnTouchHandleType.onLongPress) {
+      item.onLongPress?.call(index);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -61,6 +96,11 @@ class VerticalStepperItem extends StatelessWidget {
   }
 
   List<Widget> getChildren() {
+    List<Widget> widget = [];
+    item.title != null ? widget.addAll([item.title!]) : null;
+    item.subtitle != null
+        ? widget.addAll([const SizedBox(height: 8), item.subtitle!])
+        : null;
     return [
       Column(
         children: [
@@ -75,7 +115,7 @@ class VerticalStepperItem extends StatelessWidget {
               ? SizedBox(
                   height: iconHeight,
                   width: iconWidth,
-                  child: item.iconWidget ??
+                  child: onHandleItemForIconWidget() ??
                       StepperDot(
                         index: index,
                         totalLength: totalLength,
@@ -87,7 +127,7 @@ class VerticalStepperItem extends StatelessWidget {
                   child: SizedBox(
                     height: iconHeight,
                     width: iconWidth,
-                    child: item.iconWidget ??
+                    child: onHandleItemForIconWidget() ??
                         StepperDot(
                           index: index,
                           totalLength: totalLength,
@@ -106,39 +146,53 @@ class VerticalStepperItem extends StatelessWidget {
       ),
       const SizedBox(width: 8),
       Expanded(
-        child: Column(
-          crossAxisAlignment:
-              isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            if (item.title != null) ...[
-              Text(
-                item.title!.text,
-                textAlign: TextAlign.start,
-                style: item.title!.textStyle ??
-                    const TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
-              ),
-            ],
-            if (item.subtitle != null) ...[
-              const SizedBox(height: 8),
-              Text(
-                item.subtitle!.text,
-                textAlign: TextAlign.start,
-                style: item.subtitle!.textStyle ??
-                    const TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
-            ],
-          ],
+        child: GestureDetector(
+          onTap: enabled
+              ? () => handleTabEvent(type: OnTouchHandleType.onTab)
+              : null,
+          onDoubleTap: enabled
+              ? () => handleTabEvent(type: OnTouchHandleType.onDoubleTab)
+              : null,
+          onLongPress: enabled
+              ? () => handleTabEvent(type: OnTouchHandleType.onLongPress)
+              : null,
+          onTapDown: enabled
+              ? (e) => handleTabEvent(
+                  type: OnTouchHandleType.onTabDown, downDetails: e)
+              : null,
+          onTapUp: enabled
+              ? (e) =>
+                  handleTabEvent(type: OnTouchHandleType.onTabUp, upDetails: e)
+              : null,
+          child: Column(
+              crossAxisAlignment: isInverted
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.start,
+              children: widget),
         ),
       ),
     ];
+  }
+
+  Widget onHandleItemForIconWidget() {
+    return GestureDetector(
+      onTap:
+          enabled ? () => handleTabEvent(type: OnTouchHandleType.onTab) : null,
+      onDoubleTap: enabled
+          ? () => handleTabEvent(type: OnTouchHandleType.onDoubleTab)
+          : null,
+      onLongPress: enabled
+          ? () => handleTabEvent(type: OnTouchHandleType.onLongPress)
+          : null,
+      onTapDown: enabled
+          ? (e) =>
+              handleTabEvent(type: OnTouchHandleType.onTabDown, downDetails: e)
+          : null,
+      onTapUp: enabled
+          ? (e) => handleTabEvent(type: OnTouchHandleType.onTabUp, upDetails: e)
+          : null,
+      child: item.iconWidget,
+    );
   }
 
   List<Widget> getInvertedChildren() {
