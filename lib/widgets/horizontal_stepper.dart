@@ -120,8 +120,8 @@ class HorizontalStepperItem extends StatelessWidget {
                         ? activeBarColor
                         : inActiveBarColor),
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(barRadius),
-                  bottomLeft: Radius.circular(barRadius),
+                  topRight: Radius.circular(barRadius),
+                  bottomRight: Radius.circular(barRadius),
                 ),
               ),
             ),
@@ -140,8 +140,8 @@ class HorizontalStepperItem extends StatelessWidget {
                     ? Colors.transparent
                     : (index < activeIndex ? activeBarColor : inActiveBarColor),
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(barRadius),
-                  bottomRight: Radius.circular(barRadius),
+                  topLeft: Radius.circular(barRadius),
+                  bottomLeft: Radius.circular(barRadius),
                 ),
               ),
             ),
