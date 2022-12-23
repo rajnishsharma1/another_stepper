@@ -16,6 +16,7 @@ class VerticalStepperItem extends StatelessWidget {
       required this.activeBarColor,
       required this.inActiveBarColor,
       required this.barWidth,
+      required this.barRadius,
       this.iconHeight,
       this.iconWidth})
       : super(key: key);
@@ -47,6 +48,9 @@ class VerticalStepperItem extends StatelessWidget {
   /// Bar width/thickness
   final double barWidth;
 
+  /// Bar Radius/thickness
+  final double barRadius;
+
   /// Height of [StepperData.iconWidget]
   final double? iconHeight;
 
@@ -65,11 +69,14 @@ class VerticalStepperItem extends StatelessWidget {
       Column(
         children: [
           Container(
-            color: index == 0
-                ? Colors.transparent
-                : (index <= activeIndex ? activeBarColor : inActiveBarColor),
             width: barWidth,
             height: gap,
+            decoration: BoxDecoration(
+              color: index == 0
+                  ? Colors.transparent
+                  : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+              borderRadius: BorderRadius.circular(barRadius),
+            ),
           ),
           index <= activeIndex
               ? SizedBox(
@@ -96,11 +103,14 @@ class VerticalStepperItem extends StatelessWidget {
                   ),
                 ),
           Container(
-            color: index == totalLength - 1
-                ? Colors.transparent
-                : (index < activeIndex ? activeBarColor : inActiveBarColor),
             width: barWidth,
             height: gap,
+            decoration: BoxDecoration(
+              color: index == totalLength - 1
+                  ? Colors.transparent
+                  : (index < activeIndex ? activeBarColor : inActiveBarColor),
+              borderRadius: BorderRadius.circular(barRadius),
+            ),
           ),
         ],
       ),

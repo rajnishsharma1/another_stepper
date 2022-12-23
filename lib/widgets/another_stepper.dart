@@ -19,6 +19,7 @@ class AnotherStepper extends StatelessWidget {
     this.activeBarColor = Colors.blue,
     this.inActiveBarColor = Colors.grey,
     this.barThickness = 2,
+    this.barThicknessRadius = 0,
     this.scrollPhysics,
     this.iconHeight,
     this.iconWidth,
@@ -51,6 +52,9 @@ class AnotherStepper extends StatelessWidget {
 
   /// Bar width/thickness/height
   final double barThickness;
+
+  /// Bar raduis/thickness Default = 0
+  final double barThicknessRadius;
 
   /// Height of [StepperData.iconWidget]
   ///
@@ -97,6 +101,7 @@ class AnotherStepper extends StatelessWidget {
         inActiveBarColor: inActiveBarColor,
         activeBarColor: activeBarColor,
         barHeight: barThickness,
+        barRadius: barThicknessRadius,
         iconHeight: iconHeight,
         iconWidth: iconWidth,
       );
@@ -111,6 +116,7 @@ class AnotherStepper extends StatelessWidget {
         inActiveBarColor: inActiveBarColor,
         activeBarColor: activeBarColor,
         barWidth: barThickness,
+        barRadius: barThicknessRadius,
         iconHeight: iconHeight,
         iconWidth: iconWidth,
       );
