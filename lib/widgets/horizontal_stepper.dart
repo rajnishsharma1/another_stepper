@@ -1,6 +1,5 @@
 import 'package:another_stepper/dto/stepper_data.dart';
-import 'package:another_stepper/utils/utils.dart';
-import 'package:another_stepper/widgets/stepper_dot_widget.dart';
+import 'package:another_stepper/widgets/common/dot_provider.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalStepperItem extends StatelessWidget {
@@ -54,25 +53,13 @@ class HorizontalStepperItem extends StatelessWidget {
     return Flexible(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment:
-            isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
+        mainAxisAlignment: isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
         children: isInverted ? getInvertedChildren() : getChildren(),
       ),
     );
   }
 
   List<Widget> getChildren() {
-    final Widget dot = SizedBox(
-      height: iconHeight,
-      width: iconWidth,
-      child: item.iconWidget ??
-          StepperDot(
-            index: index,
-            totalLength: totalLength,
-            activeIndex: activeIndex,
-          ),
-    );
-
     return [
       if (item.title != null) ...[
         SizedBox(
@@ -108,18 +95,18 @@ class HorizontalStepperItem extends StatelessWidget {
         children: [
           Flexible(
             child: Container(
-              color: index == 0
-                  ? Colors.transparent
-                  : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+              color: index == 0 ? Colors.transparent : (index <= activeIndex ? activeBarColor : inActiveBarColor),
               height: barHeight,
             ),
           ),
-          index <= activeIndex
-              ? dot
-              : ColorFiltered(
-                  colorFilter: Utils.getGreyScaleColorFilter(),
-                  child: dot,
-                ),
+          DotProvider(
+            activeIndex: activeIndex,
+            index: index,
+            item: item,
+            totalLength: totalLength,
+            iconHeight: iconHeight,
+            iconWidth: iconWidth,
+          ),
           Flexible(
             child: Container(
               color: index == totalLength - 1

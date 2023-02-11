@@ -1,3 +1,6 @@
+## 1.2.0
+* Updated Stepper dot color to be dynamic(User provided) when user sends iconWidget from StepperData
+
 ## 1.1.6
 * Add TextStyles to each step using [StepperText]
 * [Deprecated] titleTextStyle and subtitleTextStyle from package

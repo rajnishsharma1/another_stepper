@@ -1,6 +1,5 @@
 import 'package:another_stepper/dto/stepper_data.dart';
-import 'package:another_stepper/utils/utils.dart';
-import 'package:another_stepper/widgets/stepper_dot_widget.dart';
+import 'package:another_stepper/widgets/common/dot_provider.dart';
 import 'package:flutter/material.dart';
 
 class VerticalStepperItem extends StatelessWidget {
@@ -65,36 +64,18 @@ class VerticalStepperItem extends StatelessWidget {
       Column(
         children: [
           Container(
-            color: index == 0
-                ? Colors.transparent
-                : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+            color: index == 0 ? Colors.transparent : (index <= activeIndex ? activeBarColor : inActiveBarColor),
             width: barWidth,
             height: gap,
           ),
-          index <= activeIndex
-              ? SizedBox(
-                  height: iconHeight,
-                  width: iconWidth,
-                  child: item.iconWidget ??
-                      StepperDot(
-                        index: index,
-                        totalLength: totalLength,
-                        activeIndex: activeIndex,
-                      ),
-                )
-              : ColorFiltered(
-                  colorFilter: Utils.getGreyScaleColorFilter(),
-                  child: SizedBox(
-                    height: iconHeight,
-                    width: iconWidth,
-                    child: item.iconWidget ??
-                        StepperDot(
-                          index: index,
-                          totalLength: totalLength,
-                          activeIndex: activeIndex,
-                        ),
-                  ),
-                ),
+          DotProvider(
+            activeIndex: activeIndex,
+            index: index,
+            item: item,
+            totalLength: totalLength,
+            iconHeight: iconHeight,
+            iconWidth: iconWidth,
+          ),
           Container(
             color: index == totalLength - 1
                 ? Colors.transparent
@@ -107,8 +88,7 @@ class VerticalStepperItem extends StatelessWidget {
       const SizedBox(width: 8),
       Expanded(
         child: Column(
-          crossAxisAlignment:
-              isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment: isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
             if (item.title != null) ...[
               Text(
