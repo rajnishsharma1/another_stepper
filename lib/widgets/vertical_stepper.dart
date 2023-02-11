@@ -64,7 +64,9 @@ class VerticalStepperItem extends StatelessWidget {
       Column(
         children: [
           Container(
-            color: index == 0 ? Colors.transparent : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+            color: index == 0
+                ? Colors.transparent
+                : (index <= activeIndex ? activeBarColor : inActiveBarColor),
             width: barWidth,
             height: gap,
           ),
@@ -88,7 +90,8 @@ class VerticalStepperItem extends StatelessWidget {
       const SizedBox(width: 8),
       Expanded(
         child: Column(
-          crossAxisAlignment: isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment:
+              isInverted ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
             if (item.title != null) ...[
               Text(

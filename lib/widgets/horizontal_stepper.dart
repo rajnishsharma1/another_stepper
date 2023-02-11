@@ -53,7 +53,8 @@ class HorizontalStepperItem extends StatelessWidget {
     return Flexible(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
+        mainAxisAlignment:
+            isInverted ? MainAxisAlignment.start : MainAxisAlignment.end,
         children: isInverted ? getInvertedChildren() : getChildren(),
       ),
     );
@@ -95,7 +96,9 @@ class HorizontalStepperItem extends StatelessWidget {
         children: [
           Flexible(
             child: Container(
-              color: index == 0 ? Colors.transparent : (index <= activeIndex ? activeBarColor : inActiveBarColor),
+              color: index == 0
+                  ? Colors.transparent
+                  : (index <= activeIndex ? activeBarColor : inActiveBarColor),
               height: barHeight,
             ),
           ),
