@@ -27,7 +27,6 @@ class _MyAppState extends State<MyApp> {
           decoration: const BoxDecoration(
               color: Colors.green,
               borderRadius: BorderRadius.all(Radius.circular(30))),
-          child: const Icon(Icons.looks_one, color: Colors.white),
         )),
     StepperData(
         title: StepperText("Preparing"),
@@ -51,11 +50,14 @@ class _MyAppState extends State<MyApp> {
           child: const Icon(Icons.looks_3, color: Colors.white),
         )),
     StepperData(
-      title: StepperText("Delivered",
-          textStyle: const TextStyle(
-            color: Colors.grey,
-          )),
-    ),
+        title: StepperText("Delivered",
+            textStyle: const TextStyle(color: Colors.grey)),
+        iconWidget: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: const BoxDecoration(
+              color: Colors.redAccent,
+              borderRadius: BorderRadius.all(Radius.circular(30))),
+        )),
   ];
 
   @override
@@ -78,25 +80,13 @@ class _MyAppState extends State<MyApp> {
               child: AnotherStepper(
                 stepperList: stepperData,
                 stepperDirection: Axis.horizontal,
-                gap: 20,
                 iconWidth: 40,
                 iconHeight: 40,
                 activeBarColor: Colors.green,
                 inActiveBarColor: Colors.grey,
+                inverted: true,
+                verticalGap: 30,
                 activeIndex: 1,
-                barThickness: 8,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20),
-              child: AnotherStepper(
-                stepperList: stepperData,
-                stepperDirection: Axis.vertical,
-                activeBarColor: Colors.green,
-                iconWidth: 40,
-                iconHeight: 40,
-                inActiveBarColor: Colors.grey,
-                activeIndex: 2,
                 barThickness: 8,
               ),
             ),

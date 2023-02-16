@@ -1,6 +1,6 @@
 name: another_stepper
 description: A flutter package to create easily customizable Horizontal and Vertical stepper.
-version: 1.2.0
+version: 1.2.1
 repository: https://github.com/BlackNoir1/another_stepper
 
 environment:
