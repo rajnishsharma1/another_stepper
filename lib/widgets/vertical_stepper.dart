@@ -15,8 +15,8 @@ class VerticalStepperItem extends StatelessWidget {
       required this.activeBarColor,
       required this.inActiveBarColor,
       required this.barWidth,
-      this.iconHeight,
-      this.iconWidth})
+      required this.iconHeight,
+      required this.iconWidth})
       : super(key: key);
 
   /// Stepper item of type [StepperData] to inflate stepper with data
@@ -47,10 +47,10 @@ class VerticalStepperItem extends StatelessWidget {
   final double barWidth;
 
   /// Height of [StepperData.iconWidget]
-  final double? iconHeight;
+  final double iconHeight;
 
   /// Width of [StepperData.iconWidget]
-  final double? iconWidth;
+  final double iconWidth;
 
   @override
   Widget build(BuildContext context) {

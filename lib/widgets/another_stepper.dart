@@ -7,12 +7,12 @@ class AnotherStepper extends StatelessWidget {
   /// Another stepper is a package, which helps build
   /// customizable and easy to manage steppers.
   ///
-  /// The package and be used to build horizontal as well
-  /// as vertical steppers just by providing [Axis] in the [gap] parameter.
+  /// The package can be used to build horizontal as well
+  /// as vertical steppers just by providing [Axis] in the [stepperDirection] parameter.
   const AnotherStepper({
     Key? key,
     required this.stepperList,
-    this.gap = 40,
+    this.verticalGap = 40,
     this.activeIndex = 0,
     required this.stepperDirection,
     this.inverted = false,
@@ -20,19 +20,23 @@ class AnotherStepper extends StatelessWidget {
     this.inActiveBarColor = Colors.grey,
     this.barThickness = 2,
     this.scrollPhysics,
-    this.iconHeight,
-    this.iconWidth,
-  }) : super(key: key);
+    this.iconHeight = 20,
+    this.iconWidth = 20,
+  })  : assert(verticalGap >= 0),
+        super(key: key);
 
-  /// Stepper [List] of type [StepperData] to inflate stepper with data
+  /// Stepper [List] of type [StepperData] to render the Stepper on the UI with data
   final List<StepperData> stepperList;
 
   /// Gap between the items in the stepper, Default = 40
-  /// (Recommended to keep it greater than 20 in [Axis.vertical])
-  /// (Recommended to keep it greater than 40 in [Axis.horizontal])
-  final double gap;
+  /// (Use it to give fixed height of stepper bar when using [Axis.vertical])
+  final double verticalGap;
 
-  /// Active index, till which [index] the stepper will be highlighted
+  /// Active index - till which [index] the stepper will be highlighted
+  ///
+  /// Note : When using the [iconWidget] from [StepperData] to pass
+  /// your custom dotWidget, you need to pass the dotWidget decoration to make it look active.
+  /// In the above case only the stepper bar color will change to [activeBarColor]
   final int activeIndex;
 
   /// Stepper direction takes [Axis]
@@ -55,14 +59,14 @@ class AnotherStepper extends StatelessWidget {
   /// Height of [StepperData.iconWidget]
   ///
   /// Default value = 20
-  final double? iconHeight;
+  final double iconHeight;
 
   /// Width of [StepperData.iconWidget]
   ///
   /// Default value = 20
-  final double? iconWidth;
+  final double iconWidth;
 
-  /// Scroll physics for listview
+  /// Scroll physics for listview if it is nested with some kind of Scrolling Widget
   final ScrollPhysics? scrollPhysics;
 
   @override
@@ -105,7 +109,7 @@ class AnotherStepper extends StatelessWidget {
         index: index,
         item: stepperList[index],
         totalLength: stepperList.length,
-        gap: gap,
+        gap: verticalGap,
         activeIndex: activeIndex,
         isInverted: inverted,
         inActiveBarColor: inActiveBarColor,

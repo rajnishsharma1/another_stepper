@@ -1,3 +1,7 @@
+## 1.2.1
+* Minor documentation changes
+* Update [iconHeight] and [iconWidth] default values
+
 ## 1.2.0
 * Updated Stepper dot color to be dynamic(User provided) when user sends iconWidget from StepperData
 
