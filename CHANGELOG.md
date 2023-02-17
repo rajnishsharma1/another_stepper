@@ -1,4 +1,7 @@
 ## 1.2.1
+* Update dependencies
+
+## 1.2.1
 * Minor documentation changes
 * Update [iconHeight] and [iconWidth] default values
 
